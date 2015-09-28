@@ -35,5 +35,5 @@ def index(request):
 def sort(items):
     for i in range(len(items)):
         for j in range(len(items)-1-i):
-            if items[j].published_parsed > items[j+1].published_parsed:
+            if items[j].published_parsed < items[j+1].published_parsed:
                 items[j], items[j+1] = items[j+1], items[j]
