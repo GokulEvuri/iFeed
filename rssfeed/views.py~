@@ -1,0 +1,34 @@
+#Author Gokul S. Evuri (gokul.evuri@gmail.com)
+
+from django.shortcuts import render
+import xml
+import feedparser #need the lib to be installed system-wide [ToDo: Make it also work with in-app installation of lib]
+
+
+from .models import Website
+
+# Create your views here.
+
+def index(request):
+    feed_websites = Website.objects.all()
+    #template = loader.get_template('rssfeed/index.html')
+    #context = RequestContext(request, {'rssfeed':feed_websites,})
+    feed_i = []
+    feed = [] 
+    for fw in feed_websites[:]:
+        #request the site for rss content
+        #handle the exception
+        feed_i.append(feedparser.parse(fw.web_url))
+        #[ToDo]store it in feed
+    
+    for f in feed_i[:]:
+        #tmp = xml.etree.ElementTree.parse(f).getroot()
+        #for entries in tmp.findall('item'):
+            #print entries.get('title')
+        for r in f.entries:
+             print r.link
+    context = {'rssfeed':feed, 'rss_websites':feed_websites}
+    #output = ', '.join([p.web_url for p in feed_websites])
+    #return HttpResponse(output)
+    #return HttpResponse(template.render(context))
+    return render(request, 'rssfeed/index.html', context)
