@@ -1,7 +1,7 @@
 # ifeed
 Get all your rss feed at one place
 
-Expecting Django and pip are already installed.
+Expecting 'django' and 'pip' are already installed.
 
 Dependency packages
    * feedparser ('sudo pip install feedparser')
