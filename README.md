@@ -17,6 +17,10 @@ Project and apps, developed in the following environment
    * python 2.7
    * django 1.8.4
 
+For admin
+    User Name: abcd
+    Password: abcd1234
+
 [ToDo]
 
 Update running project with virtualenv
